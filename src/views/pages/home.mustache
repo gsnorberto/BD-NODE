@@ -1,0 +1,32 @@
+{{>partials/header}}
+
+   <!-- Condicional -->
+   {{#showWelcome}}
+      Opa, tudo bem {{ user.name }} sua idade é {{ user.age }} ? Você mora na {{ address }} ?
+   {{/showWelcome}}
+   <hr />
+
+   {{#showOld}}
+      Mostrando idade maior que 50;
+   {{/showOld}}
+   <hr />
+
+   <h2>Lista de Produtos</h2>
+   <ul>
+      {{#products}}
+         {{>partials/productItem}}
+      {{/products}}
+      <!-- (simula o "else") Se não tiver produtos na lista-->
+      {{^products}}
+         Não há produtos
+      {{/products}}
+   </ul>
+
+   <h2>Produtos Caros</h2>
+   <ul>
+      {{#expensiveProducts}}
+         {{>partials/productItem}}
+      {{/expensiveProducts}}
+   </ul>
+
+{{>partials/footer}}

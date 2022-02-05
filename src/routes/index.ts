@@ -1,20 +1,17 @@
-import { Router, Request, Response } from 'express'
+import { Router } from 'express'
+import * as homeController from '../controllers/homeController';
+import * as infoController from '../controllers/infoController';
+import * as userController from '../controllers/userController';
 
 const router = Router()
 
-router.get('/', (req: Request,res: Response)=>{
-   //pegar os produtos do banco de dados
-   //organizar as informações desses produtos
-   //envia para o template engine
-   res.send('Olá Mundo!')
-});
+router.get('/', homeController.home);
 
-router.get('/contato', (req: Request,res: Response)=>{
-   res.send('Formulário de Contato')
-});
+router.get('/contato', infoController.contact);
+router.get('/sobre', infoController.about);
 
-router.get('/sobre', (req: Request,res: Response)=>{
-   res.send('Página Sobre')
-});
+router.get('/nome', userController.name);
+router.get('/idade', userController.ageForm)
+router.post('/idade-resultado', userController.ageAction)
 
 export default router;
