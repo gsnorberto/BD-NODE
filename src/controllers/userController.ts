@@ -1,33 +1,32 @@
-import { Request, Response } from "express";
+import { Request, Response } from 'express';
 
-export const name = (req: Request,res: Response)=> {
-   let nome: string = req.query.nome as string;
-   let idade: string = req.query.idade as string;
-   
-   res.render('pages/nome',{
-      nome,
-      idade
-   })
-}
+export const nome = (req: Request, res: Response) => {
+    let nome: string = req.query.nome as string;
+    let idade: string = req.query.idade as string;
 
-export const ageForm = (req: Request,res: Response) => {
-   res.render('pages/idade');
-}
+    res.render('pages/nome', {
+        nome,
+        idade
+    });
+};
 
-export const ageAction = (req: Request,res: Response) =>{
-   let mostrarIdade: boolean = false;
-   let idade: number = 0;
+export const idadeForm = (req: Request, res: Response) => {
+    res.render('pages/idade');
+};
 
-   if(req.body.ano){
-      let anoNascimento = req.body.ano as string;
-      let anoAtual:number = new Date().getFullYear();
+export const idadeAction = (req: Request, res: Response) => {
+    let mostrarIdade: boolean = false;
+    let idade: number = 0;
 
-      idade = anoAtual - parseInt(anoNascimento)
-      mostrarIdade = true;
-   }
+    if(req.body.ano) {
+        let anoNascimento: number = parseInt(req.body.ano as string);
+        let anoAtual: number = new Date().getFullYear();
+        idade = anoAtual - anoNascimento;
+        mostrarIdade = true;
+    }
 
-   res.render('pages/idade',{
-      idade,
-      mostrarIdade
-   });
-}
+    res.render('pages/idade', {
+        idade,
+        mostrarIdade
+    });
+};

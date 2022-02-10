@@ -1,27 +1,34 @@
-import { Request, Response } from 'express'
+import { Request, Response } from 'express';
+
+// import { sequelize } from '../instances/mysql';
+import { sequelize } from '../instances/pg';
 
 import { Product } from '../models/Product';
 
-export const home = (req: Request,res: Response)=>{
-   let user = { name: 'gabriel', age: 25 }
-   let age: number = 90;
-   let showOld: boolean = false;
+export const home = async (req: Request, res: Response)=>{
+    try{
+        await sequelize.authenticate();
+        console.log("conexão estabelecida com sucesso!");
+    } catch(error){
+        console.log(error);
+    }
 
-   if(age > 50){
-      showOld = true;
-   }
+    let age: number = 90;
+    let showOld: boolean = false;
 
-   //Faz requisição ao "Model" (responsável por processar os dados do BD)
-   let list = Product.getAll();
-   let expensiveList = Product.getPriceAfter(12);
+    if(age > 50) {
+        showOld = true;
+    }
 
-   //Envia para o "views" (Página de visualização dos dados processados)
-   res.render('pages/home', { // nome da página na pasta "views"
-      user,
-      address: 'rua 5',
-      showWelcome: true,
-      showOld,
-      products: list,
-      expensiveProducts: expensiveList
-   })
-}
+    let list = Product.getAll();
+    let expensiveList = Product.getFromPriceAfter(12);
+
+    res.render('pages/home', {
+        name: 'Bonieky',
+        lastName: 'Lacerda',
+        showOld,
+        products: list,
+        expensives: expensiveList,
+        frasesDoDia: []
+    });
+};

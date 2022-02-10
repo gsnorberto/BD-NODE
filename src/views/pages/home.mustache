@@ -1,32 +1,38 @@
 {{>partials/header}}
 
-   <!-- Condicional -->
-   {{#showWelcome}}
-      Opa, tudo bem {{ user.name }} sua idade é {{ user.age }} ? Você mora na {{ address }} ?
-   {{/showWelcome}}
-   <hr />
+Opa {{name}} {{lastName}}, tudo bem?
+{{#showOld}}
+    Como vai a vida?
+{{/showOld}}
+{{^showOld}}
+    Beleza?
+{{/showOld}}
 
-   {{#showOld}}
-      Mostrando idade maior que 50;
-   {{/showOld}}
-   <hr />
+<hr/>
+<h2>Produtos</h2>
+<ul>
+    {{#products}}
+        {{>partials/productItem}}
+    {{/products}}
+</ul>
 
-   <h2>Lista de Produtos</h2>
-   <ul>
-      {{#products}}
-         {{>partials/productItem}}
-      {{/products}}
-      <!-- (simula o "else") Se não tiver produtos na lista-->
-      {{^products}}
-         Não há produtos
-      {{/products}}
-   </ul>
+<hr/>
+<h2>Produtos a partir de R$ 12</h2>
+<ul>
+    {{#expensives}}
+        {{>partials/productItem}}
+    {{/expensives}}
+</ul>
 
-   <h2>Produtos Caros</h2>
-   <ul>
-      {{#expensiveProducts}}
-         {{>partials/productItem}}
-      {{/expensiveProducts}}
-   </ul>
+<hr/>
+
+<ul>
+    {{#frasesDoDia}}
+        <li>{{.}}</li>
+    {{/frasesDoDia}}
+    {{^frasesDoDia}}
+        Não há frases motivacionais hoje.
+    {{/frasesDoDia}}
+</ul>
 
 {{>partials/footer}}

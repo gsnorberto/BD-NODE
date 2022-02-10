@@ -1,15 +1,14 @@
 {{>partials/header}}
 
-<h1>Qual seu Nome?</h1>
+<h2>Qual seu nome?</h2>
 <form method="GET">
-   <input type="text" name="nome" placeholder="Digite seu Nome">
-   <input type="text" name="idade" placeholder="Digite a idade">
-   <button>Enviar</button>
+    <input type="text" name="nome" placeholder="Digite seu nome" /><br/>
+    <input type="submit" value="Enviar" />
 </form>
 
 {{#nome}}
-   <hr />
-   Opa {{nome}}, tudo bem? Você tem {{idade}} anos.
+    <hr/>
+    Opa {{nome}}, tudo bem? Você tem {{idade}} anos.
 {{/nome}}
 
 {{>partials/footer}}

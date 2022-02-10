@@ -1,17 +1,18 @@
-import { Router } from 'express'
-import * as homeController from '../controllers/homeController';
-import * as infoController from '../controllers/infoController';
-import * as userController from '../controllers/userController';
+import { Router } from 'express';
 
-const router = Router()
+import * as HomeController from '../controllers/homeController';
+import * as InfoController from '../controllers/infoController';
+import * as UserController from '../controllers/userController';
 
-router.get('/', homeController.home);
+const router = Router();
 
-router.get('/contato', infoController.contact);
-router.get('/sobre', infoController.about);
+router.get('/', HomeController.home);
 
-router.get('/nome', userController.name);
-router.get('/idade', userController.ageForm)
-router.post('/idade-resultado', userController.ageAction)
+router.get('/contato', InfoController.contato);
+router.get('/sobre', InfoController.sobre);
+
+router.get('/nome', UserController.nome);
+router.get('/idade', UserController.idadeForm);
+router.post('/idade-resultado', UserController.idadeAction);
 
 export default router;
