@@ -1,38 +1,49 @@
 {{>partials/header}}
 
+<!-- Banco de Dados -->
+<h2>Usuários do Banco de Dados</h2>
+<ul>
+   {{#users}}
+      <li>Nome: {{name}} - Idade: {{age}}</li>
+   {{/users}}
+</ul>
+
+<hr>
 Opa {{name}} {{lastName}}, tudo bem?
 {{#showOld}}
-    Como vai a vida?
-{{/showOld}}
-{{^showOld}}
-    Beleza?
+   Como vai a vida?
 {{/showOld}}
 
-<hr/>
+{{^showOld}}
+   Beleza?
+{{/showOld}}
+
+<hr />
 <h2>Produtos</h2>
 <ul>
-    {{#products}}
-        {{>partials/productItem}}
-    {{/products}}
+   {{#products}}
+      {{>partials/productItem}}
+   {{/products}}
 </ul>
 
-<hr/>
+<hr />
 <h2>Produtos a partir de R$ 12</h2>
 <ul>
-    {{#expensives}}
-        {{>partials/productItem}}
-    {{/expensives}}
+   {{#expensives}}
+      {{>partials/productItem}}
+   {{/expensives}}
 </ul>
 
-<hr/>
+<hr />
 
 <ul>
-    {{#frasesDoDia}}
-        <li>{{.}}</li>
-    {{/frasesDoDia}}
-    {{^frasesDoDia}}
-        Não há frases motivacionais hoje.
-    {{/frasesDoDia}}
+   {{#frasesDoDia}}
+      <li>{{.}}</li>
+   {{/frasesDoDia}}
+
+   {{^frasesDoDia}}
+      Não há frases motivacionais hoje.
+   {{/frasesDoDia}}
 </ul>
 
 {{>partials/footer}}
