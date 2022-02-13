@@ -9,10 +9,96 @@ import { User } from '../models/User';
 import { Product } from '../models/Product';
 
 export const home = async (req: Request, res: Response) => {
-   const search: string = 'Sar'
+   //const search: string = 'Sar'
+
+   // ****************** REMOÇÃO DE DADOS *********************
+
+   // MÉTODO 1
+   // let results = await User.findAll({ where: {name: 'Junior Vasconcelos'}})
+   // if(results.length > 0){
+   //    let usuario = results[0];
+
+   //    await usuario.destroy();
+   // }
+
+
+   // MÉTODO 2
+
+   // await User.destroy({
+   //    where: {
+   //       id: 11
+   //    }
+   // });
+
+   // ****************** ATUALIZAÇÃO DADOS *********************
+
+   // MÉTODO 1 (RECOMENDADO)
+
+   // let results = await User.findAll({
+   //    where: {
+   //       id: 10
+   //    }
+   // })
+   // if(results.length > 0){ //Encontrou resultados
+   //    let usuario = results[0];
+   //    usuario.age = 70;
+   //    usuario.name = "Lafaiete Coutinho"
+
+   //    await usuario.save(); // Salva no BD
+   // }
+   
+
+
+   // MÉTODO 2
+
+   //Atualização de vários usuários na tabela.
+   // Atualiza a idade para 18 de todos usuários com menos de 18 anos nos BD
+   // await User.update({ age: 18}, {
+   //    where: {
+   //       age: {
+   //          [Op.lt]: 18
+   //       }
+   //    }
+   // });
+
+   //Atualização de único usuário na tabela
+   // await User.update({ name: 'Seu Chico', age: 58}, {
+   //    where: {
+   //       id: 4
+   //    }
+   // });
+
+
+   // ****************** INSERÇÃO DE DADOS *********************
+   // Existem duas formas de inserção:
+
+   // build + save
+   // Cria a instância
+   // const user = User.build({
+   //    name: 'Agripiliano',
+   //    age: 103
+   // });
+   // Salva a instância
+   //await user.save();
+
+
+   // create
+   //Não precisa do save
+   // try{
+   //    const user = await User.create({
+   //       name: 'Kiko',
+   //       age: 'tesste'
+   //    })
+   // } catch(e){
+   //    console.log('Ocorreu um erro: '+ e);
+   // }
+
+
+
+   // **************** CONSULTAS E FILTRAGEM *******************
 
    //Pega todos os usuários do BD
-   //let users = await User.findAll();
+   let users = await User.findAll();
 
    //Pega os atributos especificados
    // let users = await User.findAll({
@@ -51,13 +137,39 @@ export const home = async (req: Request, res: Response) => {
    // });
 
    //Filtrar por parte do nome digitado
-   let users = await User.findAll({
-      where: {
-         name: {
-            [Op.like]: `%${search}%` // Todos usuários que começam com "Ga" (com Mysql não tem diferença entre letras maiúsculas e minúsculas)
-         }
-      }
-   });
+   // let users = await User.findAll({
+   //    where: {
+   //       name: {
+   //          [Op.like]: `%${search}%` // Todos usuários que começam com "Ga" (com Mysql não tem diferença entre letras maiúsculas e minúsculas)
+   //       }
+   //    }
+   // });
+
+   //Ordenação
+   // let users = await User.findAll({
+   //    where: {
+   //       age: {
+   //          [Op.gte]: 18 
+   //       }
+   //    },
+   //    //order: ['name'], // Crescente
+   //    //order: [['name', 'ASC']], // Crescente. faz o mesmo do que a linha acima
+   //    //order: [['name', 'DESC']] // Decrescente
+   //    order: [['age', 'DESC'], ['name', 'DESC']] // Decrescente
+   // });
+
+   //Limitador de resultados - Lógica da paginação
+   // let users = await User.findAll({
+   //    where: {
+   //       age: {
+   //          [Op.gte]: 13 
+   //       }
+   //    },
+   //    order: [['name', 'ASC']],
+   //    offset: 4, //pula quatro itens
+   //    limit: 2 //exibe os próximos dois itens (a partir do quinto item)
+   // });
+   
 
 
 

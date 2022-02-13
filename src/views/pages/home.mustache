@@ -1,6 +1,24 @@
 {{>partials/header}}
 
-<!-- Banco de Dados -->
+<!-- Inserção de dados - Banco de Dados -->
+<fieldset>
+   <legend>Novo Usuário</legend>
+   <form method="POST" action="/novo-usuario">
+      <input type="text" name="name" placeholder="Digite o nome">
+      <br/><br/>
+      <input type="text" name="age" placeholder="Digite a idade">
+      <br/><br/>
+      <input type="submit" value="Adicionar">
+   </form>
+   <div>
+      {{#emptyName}}
+         <h3>Por favor, digite um nome</h3>
+      {{/emptyName}}
+   </div>
+</fieldset>
+
+
+<!-- Lista de usuários - Banco de Dados -->
 <h2>Usuários do Banco de Dados</h2>
 <ul>
    {{#users}}
