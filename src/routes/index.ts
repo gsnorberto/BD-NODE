@@ -15,5 +15,8 @@ router.get('/nome', UserController.nome);
 router.get('/idade', UserController.idadeForm);
 router.post('/idade-resultado', UserController.idadeAction);
 router.post('/novo-usuario', UserController.userForm)
+router.get('/usuario/:id/mais', UserController.addAge)
+router.get('/usuario/:id/menos', UserController.decAge)
+router.get('/usuario/:id/excluir', UserController.delAge)
 
 export default router;

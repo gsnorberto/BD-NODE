@@ -61,4 +61,45 @@ export const userForm = async (req: Request, res: Response) => {
       users,
       emptyName
    })
+
+   
+}
+
+export const addAge = async (req: Request, res: Response) => {
+   let id: string = req.params.id;
+
+   let results = await User.findAll({where: {id}})
+
+   if (results.length > 0){
+      let usuario = results [0];
+      usuario.age++;
+      await usuario.save();
+   }
+   
+   res.redirect('/');
+}
+
+export const decAge = async (req: Request, res: Response) => {
+   let id: string = req.params.id;
+
+   let results = await User.findAll({where: {id}})
+
+   if (results.length > 0){
+      let usuario = results [0];
+      usuario.age--;
+      await usuario.save();
+   }
+   res.redirect('/');
+}
+
+export const delAge = async (req: Request, res: Response) => {
+   let id: string = req.params.id;
+
+   let results = await User.findAll({where: {id}})
+
+   if (results.length > 0){
+      let usuario = results [0];
+      usuario.destroy();
+   }
+   res.redirect('/');
 }

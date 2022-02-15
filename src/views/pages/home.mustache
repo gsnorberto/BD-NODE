@@ -22,7 +22,13 @@
 <h2>Usuários do Banco de Dados</h2>
 <ul>
    {{#users}}
-      <li>Nome: {{name}} - Idade: {{age}}</li>
+      <li>
+         Nome: {{name}} - Idade: {{age}}
+         <a href="/usuario/{{id}}/mais">(+)</a>
+         <a href="/usuario/{{id}}/menos">(-)</a>
+         <a href="/usuario/{{id}}/excluir">(Excluir)</a>
+      </li>
+      
    {{/users}}
 </ul>
 
