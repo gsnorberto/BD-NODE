@@ -9,6 +9,41 @@ import { User } from '../models/User';
 import { Product } from '../models/Product';
 
 export const home = async (req: Request, res: Response) => {
+   
+   // ************** FIND OR CREATE ******************
+   // Verifica se o dado já está cadastrado. Se não tiver ele cria um novo
+   // const [usuario, created] = await User.findOrCreate({
+   //    where: {name: 'Gabriel'},
+   //    defaults: {
+   //       name: 'Gabriel',
+   //       age: 26
+   //    }
+   // })
+
+   // if(created){
+   //    console.log("Usuário criado com sucesso! ");
+   // } else {
+   //    console.log("Encontramos um usuário");
+   // }
+   // console.log("Nome: ", usuario.name);
+   
+   
+
+   // ****************** FIND ONE *********************
+   
+   // let usuario = await User.findByPk(1)
+
+   // let usuario = await User.findOne({
+   //    where: {
+   //       id: 90
+   //    }
+   // })
+
+   // console.log('USER >>>>' + usuario);
+   
+
+   
+   
    //const search: string = 'Sar'
 
    // ****************** REMOÇÃO DE DADOS *********************

@@ -11,6 +11,7 @@ interface UserInstance extends Model{
 export const User = sequelize.define<UserInstance>("User",{
    id: {
       primaryKey: true,
+      autoIncrement: true, //Quando não especificar o id na criação do usuário, ele vai inserir um automaticamente
       type: DataTypes.INTEGER.UNSIGNED
    },
    name: {
