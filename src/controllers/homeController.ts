@@ -9,6 +9,7 @@ import { User } from '../models/User';
 import { Product } from '../models/Product';
 
 export const home = async (req: Request, res: Response) => {
+   //const search: string = 'Sar'
    
    // ************** FIND OR CREATE ******************
    // Verifica se o dado já está cadastrado. Se não tiver ele cria um novo
@@ -19,7 +20,6 @@ export const home = async (req: Request, res: Response) => {
    //       age: 26
    //    }
    // })
-
    // if(created){
    //    console.log("Usuário criado com sucesso! ");
    // } else {
@@ -27,48 +27,39 @@ export const home = async (req: Request, res: Response) => {
    // }
    // console.log("Nome: ", usuario.name);
    
-   
 
-   // ****************** FIND ONE *********************
-   
+   // ****************** FIND BY PK ********************
    // let usuario = await User.findByPk(1)
 
+
+   // ****************** FIND ONE **********************
    // let usuario = await User.findOne({
    //    where: {
    //       id: 90
    //    }
    // })
-
    // console.log('USER >>>>' + usuario);
    
-
    
-   
-   //const search: string = 'Sar'
-
-   // ****************** REMOÇÃO DE DADOS *********************
-
+   // ********** FIND ALL - REMOÇÃO DE DADOS ***********
    // MÉTODO 1
    // let results = await User.findAll({ where: {name: 'Junior Vasconcelos'}})
    // if(results.length > 0){
    //    let usuario = results[0];
-
    //    await usuario.destroy();
    // }
 
 
    // MÉTODO 2
-
    // await User.destroy({
    //    where: {
    //       id: 11
    //    }
    // });
 
-   // ****************** ATUALIZAÇÃO DADOS *********************
 
+   // ********* FIND ALL - ATUALIZAÇÃO DE DADOS *********
    // MÉTODO 1 (RECOMENDADO)
-
    // let results = await User.findAll({
    //    where: {
    //       id: 10
@@ -78,14 +69,10 @@ export const home = async (req: Request, res: Response) => {
    //    let usuario = results[0];
    //    usuario.age = 70;
    //    usuario.name = "Lafaiete Coutinho"
-
    //    await usuario.save(); // Salva no BD
    // }
-   
-
 
    // MÉTODO 2
-
    //Atualização de vários usuários na tabela.
    // Atualiza a idade para 18 de todos usuários com menos de 18 anos nos BD
    // await User.update({ age: 18}, {
@@ -106,7 +93,6 @@ export const home = async (req: Request, res: Response) => {
 
    // ****************** INSERÇÃO DE DADOS *********************
    // Existem duas formas de inserção:
-
    // build + save
    // Cria a instância
    // const user = User.build({
@@ -115,7 +101,6 @@ export const home = async (req: Request, res: Response) => {
    // });
    // Salva a instância
    //await user.save();
-
 
    // create
    //Não precisa do save
@@ -127,7 +112,6 @@ export const home = async (req: Request, res: Response) => {
    // } catch(e){
    //    console.log('Ocorreu um erro: '+ e);
    // }
-
 
 
    // **************** CONSULTAS E FILTRAGEM *******************

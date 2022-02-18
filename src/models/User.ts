@@ -15,11 +15,21 @@ export const User = sequelize.define<UserInstance>("User",{
       type: DataTypes.INTEGER.UNSIGNED
    },
    name: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      get() { //Mostra os nomes do BD sempre em Maiúsculo
+         const raw = this.getDataValue('name')
+         return raw.toUpperCase()
+      }
    },
    age: {
       type: DataTypes.INTEGER,
-      defaultValue: 18
+      defaultValue: 18,
+      set(value: number){ //Sempre que um usuário digitar idade mennor que 18, a idade vai ser salva com 18 no BD. O set é muito útil em criptografias de senha, quando ele captura a senha digitada pelo usuário, criptografa e manda para o BD.
+         if(value < 18){
+            value = 18;
+         }
+         this.setDataValue('age',value)
+      }
    }
 },{
    tableName: 'users', //nome exato da tabela no BD

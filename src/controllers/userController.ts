@@ -61,8 +61,6 @@ export const userForm = async (req: Request, res: Response) => {
       users,
       emptyName
    })
-
-   
 }
 
 export const addAge = async (req: Request, res: Response) => {
